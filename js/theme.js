@@ -117,6 +117,3 @@ function changeColor() {
     closeFavColor();
     // console.log("改變顏色完成");
 }
-
-
-var date = document.getElementsByTagName("td"); //取得所有td的元素值(共41格)

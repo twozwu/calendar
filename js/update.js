@@ -57,14 +57,46 @@ function addOrdinalIndicator(date) {
     }
 }
 
+//建立日期格ID編號
+function getUID(year, month, day) {
+    if (month < 0) {
+        month = 11;
+        year--;
+    }
+    if (month > 11) {
+        month = 0;
+        year++;
+    }
+    // console.log("" + year + month + day);
+    return "" + year + month + day;
+}
+
+
+//記事圖示與ToolTip處理
+function appendSpriteToCellAndTooltip(uid, elem) {
+    for (let i = 0; i < postIts.length; i++) {
+        if (uid == postIts[i].id) {
+            elem.innerHTML += `<img src='images/note${postIts[i].note_num}.png' alt='A post-it note'>`;
+            elem.classList.add("tooltip");
+            elem.innerHTML += `<span>${postIts[i].note}</span>`;
+         } 
+    }
+}
+
+var date = document.getElementsByTagName("td"); //取得所有td的元素值(共41格)
+
 function fillInMonth() {
     //更新月份&年份顯示
     document.getElementById("cal-year").innerHTML = todayYear;
     document.getElementById("cal-month").innerHTML = getMonthByEnglish(todayMonth);
-
+    
     var firstDayOfToday = new Date(todayYear, todayMonth, 1).getDay(); //取得當年當月1號的星期
     // console.log(firstDayOfToday);
-
+    
+    //刪除殘留的tooltip標籤
+    for(i=0;i<date.length;i++){
+        date[i].classList.remove("tooltip");
+    }
 
     var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //每個月擁有的天數
     //2月閏年判斷
@@ -73,15 +105,19 @@ function fillInMonth() {
     }
 
     //在日期格標籤上添加以及刪除class屬性
-    for(i = 0;i <= 6; i++){
-        if(date[i].classList.contains('prev-month-last-day')) date[i].classList.remove('prev-month-last-day');
+    for (i = 0; i <= 6; i++) {
+        if (date[i].classList.contains('prev-month-last-day')) date[i].classList.remove('prev-month-last-day');
     }
-    if(firstDayOfToday > 0) date[firstDayOfToday-1].classList.add('prev-month-last-day');
+    if (firstDayOfToday > 0) date[firstDayOfToday - 1].classList.add('prev-month-last-day');
 
     //填滿日期
     for (i = 0; i < monthDays[todayMonth]; i++) {
+        // console.log("" + todayYear + todayMonth + (i + 1));
+        date[firstDayOfToday + i].setAttribute("data-uid", getUID(todayYear, todayMonth, i + 1));
         date[firstDayOfToday + i].innerHTML = i + 1;
         if (date[firstDayOfToday + i].classList.contains('color')) date[firstDayOfToday + i].classList.remove('color');
+        //如果有note則追加貼圖
+        appendSpriteToCellAndTooltip(getUID(todayYear, todayMonth, i + 1), date[firstDayOfToday + i]);
     }
 
     //上個月的最後一天
@@ -90,9 +126,11 @@ function fillInMonth() {
     if (lastMonth === -1) lastMonth = 11;
     var lastDay = monthDays[lastMonth];
     for (var i = firstDayOfToday - 1; i >= 0; i--) {
+        date[i].setAttribute("data-uid", getUID(todayYear, todayMonth - 1, lastDay));
         date[i].innerHTML = lastDay;
-        date[i].classList.add("color");
+        appendSpriteToCellAndTooltip(getUID(todayYear, todayMonth - 1, lastDay), date[i]);
         lastDay--;
+        date[i].classList.add("color");
     }
 
     //填下個月的開始
@@ -100,10 +138,14 @@ function fillInMonth() {
     // console.log(nextMonthOfFirstDay);
     j = 1;
     for (i = nextMonthOfFirstDay; i <= 41; i++) {
+        date[i].setAttribute("data-uid", getUID(todayYear, todayMonth + 1, j));
         date[i].innerHTML = j;
         date[i].classList.add("color");
+        appendSpriteToCellAndTooltip(getUID(todayYear, todayMonth + 1, j), date[i]);
         j++;
     }
+
+    // console.log(document.getElementsByTagName("tbody")[0].innerHTML);
 
     //移除今天日期元素
     if (document.getElementById("current-day")) {
@@ -116,8 +158,9 @@ function fillInMonth() {
         date[firstDayOfToday + todayDate - 1].setAttribute("id", "current-day"); //把屬性貼到今日的格子上
     }
     changeColor();
-    
 }
+
+
 
 function previousMonth() {
     // console.log("上一個月");
@@ -139,7 +182,7 @@ function nextMonth() {
     fillInMonth();
 }
 
-document.onkeydown = function(e) {
+document.onkeydown = function (e) {
     switch (e.keyCode) {
         case 37:
             previousMonth();
@@ -148,4 +191,4 @@ document.onkeydown = function(e) {
             nextMonth();
             break;
     }
-};
+}
