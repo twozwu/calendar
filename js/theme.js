@@ -80,6 +80,7 @@ function closeFavColor() {
     template.setAttribute("hidden", "hidden");
 }
 function changeColor() {
+    ajax({ color: currentColor.name });
 
     for (i = 0; i <= colorData.length; i++) {
         var cd = colorData[i];

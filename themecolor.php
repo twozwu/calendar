@@ -1,5 +1,5 @@
 <?php
-    $connection = mysqli_connect("localhost", "w200625", '!@#$asdf', "w200625_cal");
+    $connection = mysqli_connect("sql203.byethost5.com", "b5_26260316", "37213824", "b5_26260316_calender");
     if(!$connection){
         die("There was an error connecting to the database.");
     }
@@ -15,4 +15,5 @@
 
       db_updateTheme($_GET['color']);
     }
+    //測試修改資料庫要用get，如果用post會無法即時顯示(因為post的index.php是未來的php)
 ?>
