@@ -38,8 +38,19 @@ function submitPostIt() { //按了PostIt按鍵後，所要執行的方法
     }
     if (newCurrentPostIt) { //如果是新記事的話
         postIts.push(postIt); //將新記事postIT物件推入postIts陣列
+        ajax(
+            {
+                new_note_uid: postIt.id,
+                new_note_color: postIt.note_num,
+                new_note_text: postIt.note
+            }
+        );
     } else {
         postIts[currentPostItIndex].note = postIt.note; //更新現有記事物件的記事資料
+        ajax({
+            update_note_uid: post_its[data.post_its.current_post_it_index].id,
+            update_note_text: post_it.note
+        });
     }
     // console.log(postIts)
     fillInMonth(); //送出之後再更新格子一次
@@ -50,6 +61,12 @@ function deleteNote() {
     document.getElementById("edit-post-it").value = "";
     // let indexToDel;
     if (!newCurrentPostIt) {
+        //加入刪除記事資料的ajax呼叫
+        ajax(
+            {
+                delete_note_uid: postIts[currentPostItIndex].id
+            }
+        );
         postIts.splice(currentPostItIndex, 1);
     }
     // if (indexToDel != undefined) {

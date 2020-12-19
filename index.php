@@ -36,7 +36,8 @@
             die("Query failed: " . mysqli_error($connection));
         }
     }
-    function setTheme() {
+    function setTheme()
+    {
         global $connection;
         $query = "SELECT * FROM theme";
         $result = mysqli_query($connection, $query);
@@ -48,9 +49,83 @@
             return $row['cur_theme'];
         }
     }
+    function db_insertNote($uid, $color, $text)
+    { //新增記事資料函式
+        global $connection;
+        $text = mysqli_real_escape_string($connection, $text);
+        $query = "INSERT INTO notes(note_id, note_color, note_text) VALUES('$uid', '$color', '$text')";
+        $result = mysqli_query($connection, $query);
+        if (!$result) {
+            die("Something went wrong on line 24");
+        }
+    }
+    function db_updateNote($uid, $text)
+    { //更新記事資料函式
+        global $connection;
+        $text = mysqli_real_escape_string($connection, $text);
+        $query = "UPDATE notes SET note_text = '$text' WHERE note_id = '$uid' LIMIT 1";
+        $result = mysqli_query($connection, $query);
+        if (!$result) {
+            die("Something went wrong on line 44");
+        }
+    }
+    function db_deleteNote($uid)
+    { //刪除記事資料函式
+        global $connection;
+        $query = "DELETE FROM notes WHERE note_id = '$uid'";
+        $result = mysqli_query($connection, $query);
+        if (!$result) {
+            die("Something went wrong on line 43");
+        }
+    }
     //透過關聯陣列$_POST['color']取得傳送過來的color資料
     if (isset($_POST['color'])) {
         db_updateTheme($_POST['color']);
+    }
+    if (isset($_POST['new_note_uid'])) { //新增記事資料
+        db_insertNote($_POST['new_note_uid'], $_POST['new_note_color'], $_POST['new_note_text']);
+    }
+    if (isset($_POST['update_note_uid'])) { //更新記事資料
+        db_updateNote($_POST['update_note_uid'], $_POST['update_note_text']);
+    }
+    if (isset($_POST['delete_note_uid'])) { //刪除記事資料
+        db_deleteNote($_POST['delete_note_uid']);
+    }
+    ?>
+
+    <?php
+    function getNoteData()
+    {
+        global $connection;
+        $query = "SELECT * FROM notes";
+        $result = mysqli_query($connection, $query);
+        if (!$result) {
+            die("Something went wrong on line 66");
+        }
+
+        // $id = 0;
+        // $color = 1;
+        // $text = "";
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['note_id'];
+            $color = $row['note_color'];
+            $text = $row['note_text'];
+
+            //以上為php碼 
+    ?>
+            <script type="text/javascript">
+                postIt = {
+                    id: <?php echo json_encode($id); ?>,
+                    note_num: <?php echo json_encode($color); ?>,
+                    note: <?php echo json_encode($text); ?>
+                }
+
+                postIts.push(postIt);
+            </script>
+
+    <?php //再接著php碼，這種寫法在混合式的php、html、JavaScript很常見的寫法，要習慣。
+        }
     }
     ?>
 
@@ -249,8 +324,12 @@
     <script type="text/javascript" src="js/theme.js"></script>
     <script type="text/javascript" src="js/postIts.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
+
+    <!-- 呼叫getNoteData程式 -->
+    <?php getNoteData(); ?>
+
     <script>
-         currentColor.name = <?php echo(json_encode(setTheme())); ?> ; //js_encode將回傳的資料包裝成JSON字串，指定給currentColor.name
+        currentColor.name = <?php echo (json_encode(setTheme())); ?>; //js_encode將回傳的資料包裝成JSON字串，指定給currentColor.name，其值會被theme的changeColor()裡面利用
 
         update();
 
