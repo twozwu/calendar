@@ -1,0 +1,50 @@
+#current-day-info {
+    width     : 34%;
+    min-height: 100vh;
+    /* 100% viewport height(100%的視埠高度) */
+}
+
+#current-day-info #app-name-landscape {
+    /* 限定範圍，以此例來說，在#current-day-info 裏的 #app-name-landscape。landscape：風景 */
+    font-size    : 6.2vh;
+    padding      : 9vh 0 1vh;
+    /* 上 左右 下 */
+    border-bottom: 1px solid;
+    /* 寬度、樣式 */
+}
+
+#current-day-info h2 {
+    font-size  : 6vh;
+    font-weight: 300;
+    margin     : 10 0 3vh;
+    padding    : 3vh;
+}
+
+#current-day-info h1 {
+    font-size  : 6.8vh;
+    font-weight: 600;
+    margin     : 4vh 0;
+}
+
+#current-day-info #theme-landscape {
+    display  : block;
+    /* 以區塊的形式排列(右邊不接東西) */
+    padding  : 1.8vh 4.2vh;
+    color    : #FEFDFD;
+    border   : 3px solid #FEFDFD;
+    font-size: 2.4vh;
+}
+
+#current-day-info #theme-landscape:hover {
+    background-color: white;
+    opacity         : 0.4;
+    color           : black;
+}
+
+@media (orientation: landscape) {
+    /* 當網頁為橫式的時候 */
+    #current-day-info {
+        clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+        /* 切割路徑：多邊形 */
+    }
+}

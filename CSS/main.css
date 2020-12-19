@@ -41,3 +41,16 @@ body {
 .off-color {
     color: #7c7EFB;
 }
+
+table {
+    margin         : 14px auto;
+    padding        : 7vh 0;
+    border-collapse: collapse;
+    /* 表格框摺疊(變成一條線) */
+}
+
+table,
+td,
+th {
+    border: 1px solid #232323;
+}
