@@ -2,17 +2,17 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600" rel="stylesheet">
-  <link rel="icon" href="./images/icon1.png" type="image/png" sizes="72x72" />
-  <title>myCalendar</title>
-  <link rel="stylesheet" href="./CSS/main.css">
-  <link rel="stylesheet" href="./CSS/current-day-info.css">
-  <link rel="stylesheet" href="./CSS/calendar.css">
-  <link rel="stylesheet" href="./CSS/modal.css">
-  <link rel="stylesheet" href="./CSS/portrait.css">
-  <script src="https://kit.fontawesome.com/e45ac9a14a.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600" rel="stylesheet">
+    <link rel="icon" href="./images/icon1.png" type="image/png" sizes="72x72" />
+    <title>myCalendar</title>
+    <link rel="stylesheet" href="./CSS/main.css">
+    <link rel="stylesheet" href="./CSS/current-day-info.css">
+    <link rel="stylesheet" href="./CSS/calendar.css">
+    <link rel="stylesheet" href="./CSS/modal.css">
+    <link rel="stylesheet" href="./CSS/portrait.css">
+    <script src="https://kit.fontawesome.com/e45ac9a14a.js" crossorigin="anonymous"></script>
 
 </head>
 <style>
@@ -20,211 +20,222 @@
 </style>
 
 <body>
-  <!-- 左邊日期 -->
-  <div id="current-day-info" class="color">
-    <h1 id="app-name-landscape" class="off-color default-cursor center">My Calendar</h1>
+    <!-- 左邊日期 -->
+    <div id="current-day-info" class="color">
+        <h1 id="app-name-landscape" class="off-color default-cursor center">My Calendar</h1>
 
-    <div>
-      <h2 id="cur-year" class="current-day-heading default-cursor center">2020</h2>
+        <div>
+            <h2 id="cur-year" class="current-day-heading default-cursor center">2020</h2>
+        </div>
+
+        <div class="">
+            <h1 id="cur-day" class="current-day-heading default-cursor center">Wednesday</h1>
+            <h1 id="cur-month" class="current-day-heading default-cursor center">July</h1>
+            <h1 id="cur-date" class="current-day-heading default-cursor center">15<sup style="font-size: 3vw;">th</sup>
+            </h1>
+        </div>
+
+        <button id="theme-landscape" class="font button" onclick="openFavColor();">Change theme</button>
+
     </div>
 
-    <div class="">
-      <h1 id="cur-day" class="current-day-heading default-cursor center">Wednesday</h1>
-      <h1 id="cur-month" class="current-day-heading default-cursor center">July</h1>
-      <h1 id="cur-date" class="current-day-heading default-cursor center">15<sup style="font-size: 3vw;">th</sup></h1>
+    <!-- 右邊日曆 -->
+    <h3 id="back-year" class="background-text off-color">2020</h3>
+    <h4 class="background-text off-color">Calendar</h4>
+    <div id="calendar">
+        <h1 id="app-name-portrait" class="center off-color">MyCalendar</h1>
+        <table>
+            <thead class="color">
+                <tr>
+                    <th colspan="7" class="border-color">
+                        <!-- 一格橫跨7格欄位 -->
+                        <h4 id="cal-year">2020</h4>
+                        <div>
+                            <i class="fas fa-caret-left icon" onclick="previousMonth()"></i>
+                            <h3 id="cal-month">January</h3>
+                            <i class="fas fa-caret-right icon" onclick="nextMonth()"></i>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="weekday border-color">Sun</th>
+                    <th class="weekday border-color">Mon</th>
+                    <th class="weekday border-color">Tue</th>
+                    <th class="weekday border-color">Wed</th>
+                    <th class="weekday border-color">Thu</th>
+                    <th class="weekday border-color">Fri</th>
+                    <th class="weekday border-color">Sat</th>
+                </tr>
+            </thead>
+            <tbody id="table-body" class="border-color">
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td id="current-day">1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td class="tooltip">1<img src="images/note1.png" alt=""><span>這是提示！！！</span></td>
+                    <!--           span：單行的DIV -->
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="theme-portrait" class="font button color" onclick="openFavColor();">Change theme</button>
     </div>
 
-    <button id="theme-landscape" class="font button">Change theme</button>
+    <!-- color對話框 -->
+    <dialog id="modal">
+        <!-- 顏色選擇框 -->
+        <div id="fav-color" hidden>
+            <div class="popup">
+                <h4 class="center">What's your favorite color?</h4>
+                <div id="color-options">
+                    <div class="color-option">
+                        <div class="color-preview" id="blue" style="background-color: #1B19CD;"
+                            onclick="addCheckMark('blue');"><i class="fas fa-check checkmark"></i></div>
+                        <h5>Blue</h5>
+                    </div>
 
-  </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="red" style="background-color: #D01212;"
+                            onclick="addCheckMark('red');"></div>
+                        <h5>Red</h5>
+                    </div>
 
-  <!-- 右邊日曆 -->
-  <h3 id="back-year" class="background-text off-color">2020</h3>
-  <h4 class="background-text off-color">Calendar</h4>
-  <div id="calendar">
-    <h1 id="app-name-portrait" class="center off-color">MyCalendar</h1>
-    <table>
-      <thead class="color">
-        <tr>
-          <th colspan="7" class="border-color">
-            <!-- 一格橫跨7格欄位 -->
-            <h4 id="cal-year">2020</h4>
-            <div>
-              <i class="fas fa-caret-left icon"></i>
-              <h3 id="cal-month">January</h3>
-              <i class="fas fa-caret-right icon"></i>
+                    <div class="color-option">
+                        <div class="color-preview" id="purple" style="background-color: #721D89;"
+                            onclick="addCheckMark('purple');"></div>
+                        <h5>Purple</h5>
+                    </div>
+
+                    <div class="color-option">
+                        <div class="color-preview" id="green" style="background-color: #158348;"
+                            onclick="addCheckMark('green');"></div>
+                        <h5>Green</h5>
+                    </div>
+
+                    <div class="color-option">
+                        <div class="color-preview" id="orange" style="background-color: #EE742D;"
+                            onclick="addCheckMark('orange');"></div>
+                        <h5>Orange</h5>
+                    </div>
+
+                    <div class="color-option">
+                        <div class="color-preview" id="deep-orange" style="background-color: #F13C26;"
+                            onclick="addCheckMark('deep-orange');"></div>
+                        <h5>Deep Orange</h5>
+                    </div>
+
+                    <div class="color-option">
+                        <div class="color-preview" id="baby-blue" style="background-color: #31B2FC;"
+                            onclick="addCheckMark('baby-blue');"></div>
+                        <h5>Baby Blue</h5>
+                    </div>
+
+                    <div class="color-option">
+                        <div class="color-preview" id="cerise" style="background-color: #EA3D69;"
+                            onclick="addCheckMark('cerise');"></div>
+                        <h5>Cerise</h5>
+                    </div>
+
+                    <div class="color-option">
+                        <div class="color-preview" id="lime" style="background-color: #36C945;"
+                            onclick="addCheckMark('lime');"></div>
+                        <h5>Lime</h5>
+                    </div>
+
+                    <div class="color-option">
+                        <div class="color-preview" id="teal" style="background-color: #2FCCB9;"
+                            onclick="addCheckMark('teal');"></div>
+                        <h5>Teal</h5>
+                    </div>
+
+                    <div class="color-option">
+                        <div class="color-preview" id="pink" style="background-color: #F50D7A;"
+                            onclick="addCheckMark('pink');"></div>
+                        <h5>Pink</h5>
+                    </div>
+
+                    <div class="color-option">
+                        <div class="color-preview" id="black" style="background-color: #212524;"
+                            onclick="addCheckMark('black');"></div>
+                        <h5>Black</h5>
+                    </div>
+                </div>
+                <button id="update-theme-button" class="button font" onclick="changeColor();">Update</button>
             </div>
-          </th>
-        </tr>
-        <tr>
-          <th class="weekday border-color">Sun</th>
-          <th class="weekday border-color">Mon</th>
-          <th class="weekday border-color">Tue</th>
-          <th class="weekday border-color">Wed</th>
-          <th class="weekday border-color">Thu</th>
-          <th class="weekday border-color">Fri</th>
-          <th class="weekday border-color">Sat</th>
-        </tr>
-      </thead>
-      <tbody id="table-body" class="border-color">
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td id="current-day">1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td class="tooltip">1<img src="images/note1.png" alt=""><span>這是提示！！！</span></td>
-          <!--           span：單行的DIV -->
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-      </tbody>
-    </table>
-    <button id="theme-portrait" class="font button color">Change theme</button>
-  </div>
-
-  <!-- color對話框 -->
-  <dialog id="modal">
-    <!-- 顏色選擇框 -->
-    <div id="fav-color" hidden>
-      <div class="popup">
-        <h4 class="center">What's your favorite color?</h4>
-        <div id="color-options">
-          <div class="color-option">
-            <div class="color-preview" id="blue" style="background-color: #1B19CD;"><i
-                class="fas fa-check checkmark"></i></div>
-            <h5>Blue</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="red" style="background-color: #D01212;"></div>
-            <h5>Red</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="purple" style="background-color: #721D89;"></div>
-            <h5>Purple</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="green" style="background-color: #158348;"></div>
-            <h5>Green</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="orange" style="background-color: #EE742D;"></div>
-            <h5>Orange</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="deep-orange" style="background-color: #F13C26;"></div>
-            <h5>Deep Orange</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="baby-blue" style="background-color: #31B2FC;"></div>
-            <h5>Baby Blue</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="cerise" style="background-color: #EA3D69;"></div>
-            <h5>Cerise</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="lime" style="background-color: #36C945;"></div>
-            <h5>Lime</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="teal" style="background-color: #2FCCB9;"></div>
-            <h5>Teal</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="pink" style="background-color: #F50D7A;"></div>
-            <h5>Pink</h5>
-          </div>
-
-          <div class="color-option">
-            <div class="color-preview" id="black" style="background-color: #212524;"></div>
-            <h5>Black</h5>
-          </div>
         </div>
-        <button id="update-theme-button" class="button font">Update</button>
-      </div>
-    </div>
-    <!-- 筆記框 -->
-    <div id="make-note" open>
-      <div class="popup">
-        <h4>Add a note to the calendar</h4>
-        <textarea id="edit-post-it" class="font" name="post-it" autofocus></textarea>
-        <div><button class="button font post-it-button" id="add-post-it">Post It</button>
-          <button class="button font post-it-button" id="delete-button">Delete It</button>
-        </div>
-      </div>
-  </dialog>
-  <script type="text/javascript" src="js/update.js"></script>
-  <script>
-    update();
+        <!-- 筆記框 -->
+        <div id="make-note" hidden>
+            <div class="popup">
+                <h4>Add a note to the calendar</h4>
+                <textarea id="edit-post-it" class="font" name="post-it" autofocus></textarea>
+                <div><button class="button font post-it-button" id="add-post-it">Post It</button>
+                    <button class="button font post-it-button" id="delete-button">Delete It</button>
+                </div>
+            </div>
+    </dialog>
+    </dialog>
+    <script type="text/javascript" src="js/update.js"></script>
+    <script type="text/javascript" src="js/theme.js"></script>
+    <script>
+        
 
-    var date = document.getElementsByTagName("td");  //取得所有td的元素值
+        update();
 
-    var today = new Date();
-    var todayMonth = today.getMonth();
-    var todayYear = today.getFullYear();
+        var today = new Date();
+        var todayMonth = today.getMonth();
+        var todayYear = today.getFullYear();
 
-    var firstDayOfToday = new Date(todayYear, todayMonth, 1).getDay();  //取得當年當月1號的星期
-    console.log(firstDayOfToday);
 
-    for (i = 0; i < 31; i++) {
-      date[firstDayOfToday + i].innerHTML = i + 1;
-    }
-  </script>
+        fillInMonth();
+
+    </script>
 </body>
 
 </html>
