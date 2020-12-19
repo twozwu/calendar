@@ -11,56 +11,12 @@
   <link rel="stylesheet" href="./CSS/current-day-info.css">
   <link rel="stylesheet" href="./CSS/calendar.css">
   <link rel="stylesheet" href="./CSS/modal.css">
+  <link rel="stylesheet" href="./CSS/portrait.css">
   <script src="https://kit.fontawesome.com/e45ac9a14a.js" crossorigin="anonymous"></script>
 
 </head>
 <style>
-  #make-note h4 {
-    margin: 32px 0 18px;
-    font-size: calc(16px + 1.6vw);
-    font-weight: 300;
-  }
 
-  #make-note #edit-post-it {
-    height: 340px;
-    width: 42vw;
-    font-size: 2.6vw;
-    padding: 14px;
-    border: 1px solid #D8D8D8;
-    border-radius: 10px;
-    /* outline: none; */
-    /* 外輪廓不顯示 */
-    resize: none;
-    /* 輸入格調整 */
-  }
-
-  #make-note .post-it-button {
-    /* display: inline; */
-    margin: 24px 0 20px;
-    padding: 10px 26px;
-    font-size: calc(12px + 0.6vw);
-    font-weight: 400;
-  }
-
-  #make-note #add-post-it {
-    border: 3px solid #222;
-  }
-
-  #make-note #add-post-it:hover {
-    color: white;
-    background-color: #222;
-  }
-
-  #make-note #delete-button {
-    border: 3px solid #D71C1F;
-    background-color: #D71C1F;
-    color: white;
-  }
-
-  #make-note #delete-button:hover {
-    background-color: white;
-    color: #D71C1F;
-  }
 </style>
 
 <body>
@@ -74,8 +30,8 @@
 
     <div class="">
       <h1 id="cur-day" class="current-day-heading default-cursor center">Wednesday</h1>
-      <h1 id="cur-month" class="current-day-heading default-cursor center">Jun</h1>
-      <h1 id="cur-date" class="current-day-heading default-cursor center">24</h1>
+      <h1 id="cur-month" class="current-day-heading default-cursor center">July</h1>
+      <h1 id="cur-date" class="current-day-heading default-cursor center">15<sup style="font-size: 3vw;">th</sup></h1>
     </div>
 
     <button id="theme-landscape" class="font button">Change theme</button>
@@ -83,7 +39,7 @@
   </div>
 
   <!-- 右邊日曆 -->
-  <h3 class="background-text off-color">2020</h3>
+  <h3 id="back-year" class="background-text off-color">2020</h3>
   <h4 class="background-text off-color">Calendar</h4>
   <div id="calendar">
     <h1 id="app-name-portrait" class="center off-color">MyCalendar</h1>
@@ -92,7 +48,7 @@
         <tr>
           <th colspan="7" class="border-color">
             <!-- 一格橫跨7格欄位 -->
-            <h4 id="cal-year">2019</h4>
+            <h4 id="cal-year">2020</h4>
             <div>
               <i class="fas fa-caret-left icon"></i>
               <h3 id="cal-month">January</h3>
@@ -172,7 +128,7 @@
   </div>
 
   <!-- color對話框 -->
-  <dialog id="modal" open>
+  <dialog id="modal">
     <!-- 顏色選擇框 -->
     <div id="fav-color" hidden>
       <div class="popup">
@@ -252,6 +208,23 @@
         </div>
       </div>
   </dialog>
+  <script type="text/javascript" src="js/update.js"></script>
+  <script>
+    update();
+
+    var date = document.getElementsByTagName("td");  //取得所有td的元素值
+
+    var today = new Date();
+    var todayMonth = today.getMonth();
+    var todayYear = today.getFullYear();
+
+    var firstDayOfToday = new Date(todayYear, todayMonth, 1).getDay();  //取得當年當月1號的星期
+    console.log(firstDayOfToday);
+
+    for (i = 0; i < 31; i++) {
+      date[firstDayOfToday + i].innerHTML = i + 1;
+    }
+  </script>
 </body>
 
 </html>

@@ -42,9 +42,52 @@
 }
 
 @media (orientation: landscape) {
+
     /* 當網頁為橫式的時候 */
     #current-day-info {
         clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
         /* 切割路徑：多邊形 */
+    }
+}
+
+@media (orientation: portrait) {
+
+    body {
+        flex-direction: column;
+    }
+
+    #current-day-info {
+        width          : 100%;
+        min-height     : initial;
+        /* 初始最小高度 */
+        height         : 12vh;
+        padding        : 1vw 0;
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+        flex-direction : column;
+    }
+
+    #current-day-info h2 {
+        font-size: 3vh;
+    }
+
+    #current-day-info h1 {
+        font-size: 4.6vh;
+    }
+
+    #current-day-info #app-name-landscape {
+        display: none;
+    }
+
+    #current-day-info #theme-landscape {
+        display: none;
+    }
+
+    #current-day-info .current-day-heading {
+        display  : inline;
+        padding  : 0;
+        margin   : 0 4px;
+        font-size: 7vw;
     }
 }
