@@ -1,9 +1,9 @@
 #calendar {
-    width          : 66%;
-    min-height     : 100vh;
-    display        : flex;
-    align-items    : center;
-    flex-direction : column;
+    width: 66%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     justify-content: space-around;
 }
 
@@ -16,42 +16,42 @@
 }
 
 #calendar thead tr:first-child th div {
-    display        : flex;
-    align-items    : center;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
 #calendar h4 {
-    margin     : 0;
-    padding    : 0.8vw 0 0.2vw;
-    font-size  : 1.4vw;
+    margin: 0;
+    padding: 0.8vw 0 0.2vw;
+    font-size: 1.4vw;
     font-weight: 300;
 }
 
 #calendar h3 {
-    margin     : 0;
-    padding    : 0 2vw;
-    font-size  : 2vw;
+    margin: 0;
+    padding: 0 2vw;
+    font-size: 2vw;
     font-weight: 700;
-    display    : inline-block;
+    display: inline-block;
 }
 
 #calendar .weekday {
-    font-size    : 1.7vw;
-    font-weight  : 300;
-    padding      : 8px 0 5px;
+    font-size: 1.7vw;
+    font-weight: 300;
+    padding: 8px 0 5px;
     border-bottom: 1px solid white !important;
 }
 
 #calendar tbody td {
-    height        : 5.2vw;
+    height: 5.2vw;
     /* 1%視窗寬度 */
-    width         : 5.2vw;
-    font-size     : 0.8vw;
-    font-weight   : 600;
+    width: 5.2vw;
+    font-size: 0.8vw;
+    font-weight: 600;
     vertical-align: top;
-    padding       : 0.5vw;
-    transition    : font-size .6s ease;
+    padding: 0.5vw;
+    transition: font-size .6s ease;
     /* 文字動態效果 */
 }
 
@@ -60,18 +60,18 @@
 }
 
 .background-text {
-    position : absolute;
-    opacity  : 0.22;
+    position: absolute;
+    opacity: 0.22;
     font-size: 20vw;
-    z-index  : -1;
-    margin   : 0;
-    top      : 50%;
-    left     : 56%;
+    z-index: -1;
+    margin: 0;
+    top: 50%;
+    left: 56%;
     transform: translate(-50%, -50%);
 }
 
 h4.background-text {
-    top      : 62%;
+    top: 62%;
     font-size: 7vw;
 }
 
@@ -80,10 +80,10 @@ h4.background-text {
 }
 
 #calendar img {
-    width         : 3.8vw;
+    width: 3.8vw;
     vertical-align: top;
-    position      : relative;
-    top           : 0.5vw;
+    position: relative;
+    top: 0.5vw;
     /* left       : 12px; */
 }
 
@@ -92,31 +92,31 @@ h4.background-text {
 }
 
 .tooltip:hover {
-    cursor  : help;
+    cursor: help;
     position: relative;
 }
 
 .tooltip:hover span {
-    display         : block;
-    font-size       : 1vw;
-    padding         : 6px;
-    white-space     : pre-wrap;
-    width           : 12vw;
-    z-index         : 100;
+    display: block;
+    font-size: 1vw;
+    padding: 6px;
+    white-space: pre-wrap;
+    width: 12vw;
+    z-index: 100;
     background-color: #EDEDED;
-    color           : red;
-    border-radius   : 6px;
-    left            : 2vw;
-    top             : 4vw;
-    position        : absolute;
+    color: red;
+    border-radius: 6px;
+    left: 2vw;
+    top: 4vw;
+    position: absolute;
 }
 
 #calendar .icon {
-    font-size: 1.2vw;
+    font-size: 2vw;
 }
 
 #calendar .icon:hover {
     opacity: 0.6;
     transition: font-size .6s ease;
-/* 轉場特效，字型大小變化的時候，以0.6s秒時間+ease方式進行轉場*/
+    /* 轉場特效，字型大小變化的時候，以0.6s秒時間+ease方式進行轉場*/
 }
